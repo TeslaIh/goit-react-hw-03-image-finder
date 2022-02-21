@@ -8,7 +8,7 @@ import Button from "./components/Button/Button";
 import Modal from "./components/Modal/Modal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { SRLWrapper } from 'simple-react-lightbox';
+import { SRLWrapper } from 'simple-react-lightbox';
 import { toast } from "react-toastify";
 
 export default class App extends React.Component {
@@ -151,25 +151,26 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        {showModal && (
-          <Modal showModal={this.toggleModal}>
-            <img src={largeImageURL} alt={alt} />
-          </Modal>
-        )}
-
+        
         <Searchbar onSubmit={this.formSubmitHandler} />
 
         {imageData.length > 0 && (
-          // <SRLWrapper>
+          <SRLWrapper>
           <ImageGallery
             imageData={imageData}
             showModal={this.toggleModal}
             imgInfo={this.imgInfo}
             ></ImageGallery>
-            // </SRLWrapper>
+           </SRLWrapper>
         )}
 
         {loading && <Loader loading={loading} />}
+
+        {showModal && (
+          <Modal showModal={this.toggleModal}>
+            <img src={largeImageURL} alt={alt} />
+          </Modal>
+        )}
 
         {imageData && arrayLength === 12 && (
           <Button onClick={this.loadMoreImages} />
