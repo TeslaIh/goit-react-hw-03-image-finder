@@ -109,7 +109,7 @@ export default class App extends React.Component {
 
   toggleModal = (e) => {
     this.setState(({ showModal }) => ({
-      showModal: !showModal,
+      showModal: false,
     }));
   };
 
